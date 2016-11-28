@@ -43,6 +43,7 @@
 #
 
 class syslog_ng (
+  $package_name              = $syslog_ng::params::package_name,
   $system_log_dir            = $syslog_ng::params::system_log_dir,
   $config_dir                = $syslog_ng::params::config_dir,
   $local_source              = $syslog_ng::params::local_source,
@@ -81,8 +82,13 @@ class syslog_ng (
     group  => 'root',
     mode   => '0644'
   }
+
   include syslog_ng::install
+  include syslog_ng::config
   include syslog_ng::service
+
+  Class['syslog_ng::install'] -> Class['syslog_ng::config'] ~> Class['syslog_ng::service']
+
 }
 
 
