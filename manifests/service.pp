@@ -5,6 +5,5 @@ class syslog_ng::service {
     name       => 'syslog-ng',
     hasstatus  => true,
     hasrestart => true,
-    require    => Package['syslog-ng'],
   }
 }
