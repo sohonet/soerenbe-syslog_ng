@@ -155,7 +155,6 @@ define syslog_ng::log (
   $dir_group       = undef,
   $perm            = undef,
   ) {
-  validate_string($source)
   if $fallback {
     $target = $::syslog_ng::config_file_fallback
   }
