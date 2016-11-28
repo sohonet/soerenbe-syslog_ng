@@ -40,4 +40,18 @@ class syslog_ng::params {
   $config_file_rewrite              = "${config_dir}/50rewrite.conf"
   $config_file_logging              = "${config_dir}/90logging.conf"
   $config_file_fallback             = "${config_dir}/99fallback.conf"
+
+  # OS specific Paramters here
+  case $::osfamily {
+    'Redhat', 'Amazon': {
+      $package_name = 'syslog-ng'
+    }
+    'Debian', 'Ubuntu': {
+      $package_name = 'syslog-ng-core'
+    }
+    default: {
+      fail("${module_name} is not supported on ${::osfamily}")
+    }
+  }
+
 }
