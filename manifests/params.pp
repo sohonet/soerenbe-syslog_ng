@@ -2,6 +2,7 @@
 class syslog_ng::params {
   $system_log_dir = '/var/log'
   $config_dir     = '/etc/syslog-ng/conf.d'
+  $ca_dir         = '/etc/syslog-ng/cert.d'
   $local_source   = 's_src'
   $reminder_file  = undef
 

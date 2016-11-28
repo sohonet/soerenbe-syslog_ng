@@ -61,6 +61,7 @@ class syslog_ng (
   $flush_lines               = $syslog_ng::params::flush_lines,
   $log_fifo_size             = $syslog_ng::params::log_fifo_size,
   $log_fifo_size_destination = $syslog_ng::params::log_fifo_size_destination,
+  $ca_dir                    = $syslog_ng::params::ca_dir,
 ) inherits ::syslog_ng::params {
   $fragments = [
     $syslog_ng::params::config_file_sources,

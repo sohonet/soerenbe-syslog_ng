@@ -52,6 +52,12 @@ define syslog_ng::destination::network (
         target => $syslog_ng::params::config_file_destination_remote
       }
     }
+    'TLS', 'tls': {
+      syslog_ng::destination {$name:
+        spec   => "tcp('${log_server}' port(${log_port}) tls(ca_dir(\"${::syslog_ng::ca_dir}\")) log_fifo_size(${::syslog_ng::log_fifo_size_destination}));",
+        target => $syslog_ng::params::config_file_destination_remote
+      }
+    }
     default: {
       fail("${proto} is not supported by syslog_ng::client")
     }
