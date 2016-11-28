@@ -1,6 +1,6 @@
 {
   "name": "soerenbe-syslog_ng",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "soerenbe",
   "summary": "Installs, configures, and manages Syslog-ng package including client and server configuration",
   "license": "GPL-3.0",

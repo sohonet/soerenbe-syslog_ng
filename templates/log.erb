@@ -19,7 +19,7 @@ log {
   filter(f_<%= @name %>);
 <% end -%>
 <% if @destination.is_a?(Array) -%>
-<% @destination_array.each do |d| -%>
+<% @destination.each do |d| -%>
   destination(<%= d %>);
 <% end -%>
 <% else -%>
