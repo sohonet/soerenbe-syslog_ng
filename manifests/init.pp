@@ -35,11 +35,11 @@
 #
 # === Authors
 #
-# Sören Berger <soeren.berger@u1337.de>
+# S0ren Berger <soeren.berger@u1337.de>
 #
 # === Copyright
 #
-# Copyright 2015 Sören Berger.
+# Copyright 2015 S0ren Berger.
 #
 
 class syslog_ng (
