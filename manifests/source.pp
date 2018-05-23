@@ -6,7 +6,7 @@ define syslog_ng::source (
   $entry_type = 'source'
   concat::fragment{ $name:
     target  => $::syslog_ng::config_file_sources,
-    content => template('syslog_ng/entry.erb')
+    content => template('syslog_ng/entry.erb'),
   }
   if $fallback {
     validate_string($fallback)
@@ -18,35 +18,36 @@ define syslog_ng::source (
     $destination = "${name}_fallback"
     concat::fragment{ "${name}_fallback":
       target  => $::syslog_ng::config_file_fallback,
-      content => template('syslog_ng/log.erb')
+      content => template('syslog_ng/log.erb'),
     }
   }
 }
 
 # syslog-ng network source
 define syslog_ng::source::network(
-  $ip       = undef,
-  $port     = undef,
-  $proto    = 'udp',
-  $fallback = undef,
+  $ip              = undef,
+  $port            = undef,
+  $proto           = 'udp',
+  $fallback        = undef,
+  $max_connections = '10', # max connections defaults to 10 anyway.
   ) {
   case $proto {
     'UDP', 'udp': {
       syslog_ng::source { $name:
-        spec     => "udp(ip('${ip}') port(${port}));",
-        fallback => $fallback
+        spec     => " udp(ip('${ip}') port(${port})); ",
+        fallback => $fallback,
       }
     }
     'TCP', 'tcp': {
       syslog_ng::source { $name:
-        spec     => "tcp(ip('${ip}') port(${port}));",
-        fallback => $fallback
+        spec     => " tcp(ip('${ip}') port(${port}) max-connections(${max_connections})); ",
+        fallback => $fallback,
       }
     }
     'ALL', 'all': {
       syslog_ng::source { $name:
-        spec     => "\n  tcp(ip('${ip}') port(${port}));\n  udp(ip('${ip}') port(${port}));\n",
-        fallback => $fallback
+        spec     => "\n  tcp(ip('${ip}') port(${port}) max_connections(${max_connections}));\n  udp(ip('${ip}') port(${port}));\n",
+        fallback => $fallback,
       }
     }
     default: {
