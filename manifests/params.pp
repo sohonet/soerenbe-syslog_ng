@@ -26,8 +26,7 @@ class syslog_ng::params {
   # Performance tweaks
   $threaded                  = 'no'
   $flush_lines               = 0
-  $log_fifo_size             = '10000'
-  # default is 10000, this is far to much. This should be enough for outgoing destinations
+  $log_fifo_size             = '2048'
   $log_fifo_size_destination = '1000'
 
   # Config file fragments
