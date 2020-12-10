@@ -1,6 +1,5 @@
-@version: 3.5
+@version: 3.25
 @include "scl.conf"
-@include "`scl-root`/system/tty10.conf"
 
 options {
     keep_hostname(<%= scope.lookupvar('syslog_ng::keep_hostname') %>);
