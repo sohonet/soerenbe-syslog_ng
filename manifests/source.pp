@@ -30,6 +30,7 @@ define syslog_ng::source::network(
   $proto           = 'udp',
   $fallback        = undef,
   $max_connections = '10', # max connections defaults to 10 anyway.
+  $log_iw_size     = '1000',
   ) {
   case $proto {
     'UDP', 'udp': {
@@ -40,13 +41,13 @@ define syslog_ng::source::network(
     }
     'TCP', 'tcp': {
       syslog_ng::source { $name:
-        spec     => " tcp(ip('${ip}') port(${port}) max-connections(${max_connections})); ",
+        spec     => " tcp(ip('${ip}') port(${port}) log-iw-size(${log_iw_size}) max-connections(${max_connections})); ",
         fallback => $fallback,
       }
     }
     'ALL', 'all': {
       syslog_ng::source { $name:
-        spec     => "\n  tcp(ip('${ip}') port(${port}) max_connections(${max_connections}));\n  udp(ip('${ip}') port(${port}));\n",
+        spec     => "\n  tcp(ip('${ip}') port(${port}) log-iw-size(${log_iw_size}) max_connections(${max_connections}));\n  udp(ip('${ip}') port(${port}));\n",
         fallback => $fallback,
       }
     }
