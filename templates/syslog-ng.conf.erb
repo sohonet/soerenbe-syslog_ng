@@ -7,6 +7,7 @@ options {
     flush_lines(<%= scope.lookupvar('syslog_ng::flush_lines') %>);
     threaded(<%= scope.lookupvar('syslog_ng::threaded') %>);
     use_dns(<%= scope.lookupvar('syslog_ng::use_dns') %>);
+    dns_cache(<%= scope.lookupvar('syslog_ng::dns_cache') %>);
     use_fqdn(<%= scope.lookupvar('syslog_ng::use_fqdn') %>);
     owner("<%= scope.lookupvar('syslog_ng::default_owner') %>");
     group("<%= scope.lookupvar('syslog_ng::default_group') %>");

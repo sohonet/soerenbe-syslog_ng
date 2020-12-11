@@ -17,8 +17,9 @@ class syslog_ng::params {
   $default_perm              = '0640'
   # DNS behaviour
   $use_fqdn                  = 'no'
-  $use_dns                   = 'yes'
-  $chain_hostnames           = 'no'
+  $use_dns                   = 'no'
+  $dns_cache                 = 'no'
+  $chain_hostnames           = 'off'
   $keep_hostname             = 'no'
   # Logfile behaviour
   $stats_freq                = 0

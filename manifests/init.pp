@@ -54,6 +54,7 @@ class syslog_ng (
   $default_perm              = $syslog_ng::params::default_perm,
   $use_fqdn                  = $syslog_ng::params::use_fqdn,
   $use_dns                   = $syslog_ng::params::use_dns,
+  $dns_cache                 = $syslog_ng::params::dns_cache,
   $chain_hostnames           = $syslog_ng::params::chain_hostnames,
   $keep_hostname             = $syslog_ng::params::keep_hostname,
   $stats_freq                = $syslog_ng::params::stats_freq,
